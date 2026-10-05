@@ -1,0 +1,21 @@
+# Python / editors
+__pycache__/
+*.pyc
+*.swp
+
+# Analysis outputs (python3 tools/images.py analyse, or make regen in recomp/)
+analysis/ss/
+analysis/*.json
+analysis/*.json.pickle
+analysis/out/
+
+# Recompilation: generated C, objects, binaries, run outputs
+recomp/gen/
+recomp/*.o
+recomp/gyrinus2
+recomp/gyrinus2-cov
+recomp/recomp.*
+recomp/*.log
+recomp/screenshot-*.bmp
+recomp/*.wav
+recomp/savedata/
