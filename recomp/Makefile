@@ -42,7 +42,15 @@ regen:
 	python3 ../tools/images.py analyse
 	python3 ../tools/images.py gen
 
+# "make roots" merges the gap entries a --trace-gaps run logged
+# (untranslated.log, or LOG=...) into ../analysis/<image>.roots, so the next
+# "make regen" translates them.
+LOG ?= untranslated.log
+
+roots:
+	python3 ../tools/images.py roots $(LOG)
+
 clean:
 	rm -f gen/*/*.o game.o gyrinus2 gyrinus2-cov *.cov.o gen/*/*.cov.o
 
-.PHONY: FORCE cov regen clean
+.PHONY: FORCE cov regen roots clean

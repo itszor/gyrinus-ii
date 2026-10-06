@@ -2,7 +2,11 @@
 """The translated images of Gyrinus II and the steps that build them.
 
     images.py analyse   SuperSpider (s1b) on every image, then its phase 6
-                        adapter: analysis/<name>.json(.pickle), analysis/out/<name>/
+                        adapter: analysis/<name>.json(.pickle), analysis/out/<name>/;
+                        analysis/<name>.roots, if there, adds entry points
+    images.py roots LOG...
+                        merges the gap entries of --trace-gaps runs (libroger's
+                        untranslated.log) into analysis/<name>.roots
     images.py gen       recomp/gen_c.py for every image -> recomp/gen/<name>/,
                         plus recomp/gen/modules.inc (game.c's module list)
 
@@ -67,11 +71,23 @@ def analyse():
         img = os.path.join(EXT, path)
         ssj = os.path.join(an, 'ss', name + '.json')
         cmd = [exe, 's1b', img, '%x' % base, '-o', ssj]
+        rf = os.path.join(an, name + '.roots')
+        if os.path.exists(rf):
+            cmd += ['--roots', rf]
         cmd += ['--module'] if module else ['--exec', '%x' % exe_addr]
         run(cmd)
         run([sys.executable, os.path.join(SS, 'phase6/ss_to_spider.py'), ssj, img, '%x' % base,
              os.path.join(an, name + '.json'), os.path.join(an, 'out', name), an]
             + (['--module'] if module else []))
+
+
+def roots(logs):
+    """Merges the gap entries the --trace-gaps runs logged in LOGS (libroger's
+    untranslated.log) into analysis/<name>.roots, for the next analyse."""
+    an = os.path.join(TOP, 'analysis')
+    for name, path, base, exe_addr, module in images():
+        run([sys.executable, os.path.join(SS, 'tools/gap_roots.py'), os.path.join(EXT, path),
+             '%x' % base, os.path.join(an, name + '.roots')] + logs)
 
 
 def gen():
@@ -102,4 +118,7 @@ def gen():
 
 
 if __name__ == '__main__':
-    {'analyse': analyse, 'gen': gen}[sys.argv[1]]()
+    if sys.argv[1] == 'roots':
+        roots(sys.argv[2:] or ['untranslated.log'])
+    else:
+        {'analyse': analyse, 'gen': gen}[sys.argv[1]]()
