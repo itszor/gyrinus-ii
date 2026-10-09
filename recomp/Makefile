@@ -1,5 +1,5 @@
 # Static recompilation of Gyrinus II: the game (gen/mcode), its voice
-# modules (gen/v_*) and music player (gen/coco), from gen_c.py via
+# modules (gen/v_*) and music player (gen/coco), from superspider gen via
 # ../tools/images.py, and game.c, linked with libroger (the RISC OS runtime).
 ROGER   ?= $(HOME)/stuff/libroger
 CC      ?= gcc
