@@ -13,7 +13,8 @@
  * sprite file with it and plots sprites into both screen banks. Here they
  * are C (warnung, loading, runme, endgame below). MemAlloc only resizes
  * memory areas, which libroger fixes (screen_size); the voice modules are
- * translated (gen/v_*) and RMLoaded at start-up as by Loadfx2Meg. */
+ * translated (gen/v_*) and RMLoaded at start-up as by Loadfx2Meg, whose
+ * *Tuning commands are loadfx() below. */
 #include <stdio.h>
 #include <string.h>
 #include <roger.h>
@@ -113,10 +114,22 @@ static void runme(void)
     vdu((const uint8_t[]){21}, 1);
 }
 
+/* Soundfx.Loadfx2Meg, after its *RMLoads (the voices are loaded as
+ * configured modules): *Tuning is relative, so this sets the tuning three
+ * octaves below the default, bringing the effects' samples (played at
+ * BBC pitch 50 or so) down to roughly the rates they were recorded at */
+static void loadfx(void)
+{
+    roger_cli("Tuning 0");
+    roger_cli("Tuning -&1000");
+    roger_cli("Tuning -&2000");
+}
+
 /* !Run's start-up, before MCode runs */
 static void init(void)
 {
     if (roger_interactive()) { warnung(); loading(); }
+    loadfx();
     runme();
 }
 

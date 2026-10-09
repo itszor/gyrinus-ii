@@ -5,12 +5,11 @@ Disc images: `Gyrinus II - Son of Gyrinus (19xx)(Tom Cooper)(Disk 1 of 2).adf`
 (!Gyrinus2, !MrMemory, DoubleDisk) and disk 2 (!Gyrn2Mapz: level maps,
 backgrounds, level music), extracted into extracted/.
 
-    tools/detok.py      BBC BASIC V detokeniser (also lists inline assembler)
+    $SS/tools/detok.py  BBC BASIC V detokeniser (also lists inline assembler)
     basic/              the BASIC programs, detokenised
     tools/images.py     the translated images; `analyse` runs SuperSpider
-                        (~/stuff/superspider) on each, `gen` runs recomp/gen_c.py
+                        (~/stuff/superspider) on each, `gen` runs $SS/tools/gen_c.py
     analysis/           SuperSpider output (ss/), adapter output (*.json, out/),
-                        and the Lemmings tooling gen_c.py imports
     recomp/             make regen (analysis + gen_c.py), make, ./gyrinus2
 
 Only the 2MB+ version is recompiled (!Run, Code.RunMe, Soundfx.Loadfx2Meg);
@@ -46,7 +45,19 @@ What runs
   memory areas; not run. The machine is set up as they leave it
   (screen memory 160K).
 - Soundfx.Loadfx2Meg: *RMLoads 16 sample voice modules. Each is translated
-  for a fixed RMA address (tools/images.py) and loaded at start-up.
+  for a fixed RMA address (tools/images.py) and loaded at start-up. Each
+  converts its sample to VIDC log format at initialisation (with
+  Sound_SoundLog) and plays the whole sample on GateOn, whatever the note's
+  duration. Loadfx2Meg then runs `Tuning 0`, `Tuning -&1000`,
+  `Tuning -&2000`: *Tuning is relative, so the tuning ends three octaves
+  below the default, which brings the effects (played at BBC pitch 50 or
+  so) down to about 8 kHz. game.c runs the three commands; they don't
+  affect the music, whose player sets its pitches itself.
+  The game attaches voices by number, 1 to 16: Loadfx2Meg's first
+  commands (`RmFaster SoundChannels` & co) replace the sound modules with
+  fresh copies, emptying the voice table, so the 16 modules get slots 1-16
+  (!Run ends with `RmReinit WaveSynth` etc. to bring the OS's own voices
+  back). libroger has no built-in voices, so its slots are the same.
 - Code.RunMe (BASIC): the title picture, `Gyr$TuneOn` / `Gyr$TuneCont`
   (title tune on, carried on into the game), VDU 21, *Run Code.MCode. The
   first part is C in game.c.
@@ -76,10 +87,6 @@ Known differences and open questions
   advanced the tune too, and the music sped up while keys were pressed.
   game.c lets only the vsync event (4) reach it; libroger doesn't raise
   key events anyway.
-- Loadfx2Meg also runs `Tuning 0`, `Tuning -&1000`, `Tuning -&2000`.
-  libroger ignores tuning, so effects play at the untuned pitch. Whether
-  the original shifted them (and by how much - signed values are
-  relative) is unverified.
 - The hub zone and the first EASY zone draw on a plain blue background;
   not checked against the original.
 - In headless runs libroger answers VDU variable 149 (DisplayBank's
@@ -92,6 +99,9 @@ than the load address, system variables and GSTrans, an OS_CLI interpreter
 (Set, If, Load, Save, RMLoad/RMRun/RMKill, FX), modules loaded and killed
 on demand, OS_File save, reads preferring files the program saved, a
 claim return address on the stack for vector claimants (the player's
-EventV handler intercepts with `ldmia sp!, {..., pc}`), VDU 21/6,
+EventV handler intercepts with `ldmia sp!, {..., pc}`), Sound_SoundLog
+(without it every effect sample was converted to silence), Sound_Tuning
+and *Tuning, note durations left to the voices as in RISC OS (they were
+cutting the effects off after 5cs), VDU 21/6,
 OS_SpriteOp 8 (MCode builds its sprite table from the sprite count), and
 an `exited` hook for EndGame.
