@@ -181,6 +181,9 @@ static const char *const variables[] = {
 
 static const struct roger_config config = {
     .title = "Gyrinus II (recompiled)",
+    /* a controller: Z X walk, up or B jump (Shift), down a door (keypad
+     * Enter), A fire (Return), X pause (P), start Space */
+    .pad_map = "left=Z,right=X,up=Shift,down=Keypad Enter,a=Return,b=Shift,x=P,start=Space",
     /* MCode: load address &7F800, execution address &8BD08 (from the
      * disc's catalogue; the extracted name doesn't keep the latter) */
     .image_path = "../game/!Gyrinus2/Code/MCode,0007f800-00000000",
