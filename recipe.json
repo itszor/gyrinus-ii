@@ -1,0 +1,141 @@
+{
+ "name": "gyrinus-ii",
+ "title": "Gyrinus II - Son of Gyrinus (Tom Cooper, 1991; public domain)",
+ "platform": "acorn-archimedes",
+ "doc": "A recipe: how to turn a user's own copy of the game into a native executable. It holds no game data: the inputs are recognised by content (see $SS/tools/weave.py).",
+ "inputs": {
+  "containers": {
+   "Gyrinus II - Son of Gyrinus (19xx)(Tom Cooper).zip": "3866314295a65816450d6a78cb704c550e69167623b3538a76460d565b57337f"
+  },
+  "formats": [
+   "adf",
+   "zip"
+  ]
+ },
+ "discs": [
+  {
+   "name": "disc1",
+   "title": "Gyrinus II - Son of Gyrinus (Disk 1 of 2): !Gyrinus2, !MrMemory, DoubleDisk",
+   "known_images": [
+    "0b1337b893c6fe33d505e6039c4e5fff063cdd881d7fb0263adb16f79cfb4e88"
+   ],
+   "key_files": {
+    "!Gyrinus2/!Boot": "1e6ce083a925eef3c6e78fd5ddac692b96b41a902742961f5acf22d6f285083c",
+    "!Gyrinus2/!Help": "27331bd7d0e70607fdb80fbfd8200aa20190ab5144765c44d01800617187c40b",
+    "!Gyrinus2/!Rescue": "ae59acb89cd862b65d35cdaf77648d634f67e3fc34bc2f92306425a245a6426c",
+    "!Gyrinus2/!Run": "82c3b1b03ee6b062786c96c94c9ca0580a1ecff2698c32292d7478aa64b146f8",
+    "!Gyrinus2/!Run1Meg": "4d8be9cbefada427bffe32f4085a8e0987701cd634bd67447a77328cf457b822",
+    "!Gyrinus2/!Sprites": "7c615d940fbe8afc229e4f2724f5b3ae2497b8cff6935101feb4ca604ac4993d",
+    "!Gyrinus2/Code/EndGame": "81c068390a7b0c65dfc2c263c6c4c24d6a1ff2e02ffd4fa42354d633850f80e1",
+    "!Gyrinus2/Code/Loading": "6b3c46dd96c536be58bc484dead369328307797a064ec123949bb54dad6d0f9f",
+    "!Gyrinus2/Code/MCode": "54a31adb152141e446439bc9c8c6cde22ccae9683a30d011aa9180f8260b9bcf",
+    "!Gyrinus2/Code/RunMe": "35597c047212bc581c1e8cb6526a3b642c9cd1ddb55f6b64b4a0d8f3e1778cc3",
+    "!Gyrinus2/Code/RunMe1Meg": "de0e26622c70500e1300e038021392c463f1969001fe7f612f51e83a87eb4194",
+    "!Gyrinus2/Code/Warnung": "ddd06ae2bbeb231bcdd60a4250c73940f24a4d2793f63f87a3501b6a96b8aeda",
+    "!Gyrinus2/Grafix/EndScreenC": "a702b24b0e641c89bccb7514b16c596aa4386e9e09bb46602c42f5eeeaeaf5ee",
+    "!Gyrinus2/Grafix/GmCSprites": "f4593a462c91a37a30899f2caf75a0b40953e42afa2992efebc266176e476f2f",
+    "!Gyrinus2/Grafix/HelpC": "369588fa79551b69d5361c39c8133472ccc34b47d6e1549c0e42515d7f89982d",
+    "!Gyrinus2/Grafix/LoadingC": "5e45c5699528c38c5b51458b4710577fc9f820555c48ce992c0779c763fd5ed9",
+    "!Gyrinus2/Grafix/TitleCLoad": "e2f311bd394d967d886a13649901082e2683af47150f24a0003f04ba6424daaa",
+    "!Gyrinus2/Grafix/Warnung": "243cd02af648d52e38bd1d3cafdb437f486facc3c718d4e5186108a8629d4b57",
+    "!Gyrinus2/Grafix/titlespr": "6f71963edc417612c3fa3cd8160f04a347b46260a5a1d47beec838660ff488ab",
+    "!Gyrinus2/Help/Help": "f6cf8b201617a27f43e3e0ee3c77fb235774986d26edea3be53b3cd18d981311",
+    "!Gyrinus2/MiscModuls/MemAlloc": "e799448b746e544bfa6c4ca720e4e88d61a897c99da0d18a411ba795647a9c8a",
+    "!Gyrinus2/Musik/TitleTrak": "8fc9129abc25129dcfd8b3240b2a8745f79c8a60b8dda29412f03f6385de20bf",
+    "!Gyrinus2/Soundfx/Aargh!": "658928ce2e7240f86e510d9d3178427c3e2ed39947dab89282e9e70f75bf833a",
+    "!Gyrinus2/Soundfx/Boogaloo": "050d9699df12ea4c77595d1910005489e8ede44b4bb245311220295fcb7a3553",
+    "!Gyrinus2/Soundfx/Explo1": "2adb85f46f49cbc58f891e19f8d2e0c1b6fecdb51abd32c9b61c6778bbe4a7e7",
+    "!Gyrinus2/Soundfx/Explo2": "67777cf814bfcec8623838cb4555116603bf964f6e821c5e7d811e8feb840c66",
+    "!Gyrinus2/Soundfx/Explo3": "7207a99f976ce5bebc049af5e17caec76617d020ae86d052a775187201adf2ba",
+    "!Gyrinus2/Soundfx/GotBonus": "e2728b9364b626d348f1b96f94ad42e19bc6eb8e9d8182932720e6582f61d21d",
+    "!Gyrinus2/Soundfx/Hey!": "150f39500d56ead356912d4452a5bbb4550b95b1c9663097b11e2cad1e635c99",
+    "!Gyrinus2/Soundfx/IllBeBack": "bd262fd7a753beb839e989c7763a3f72eb8194ecb3c16f80cbf9f001e5c5aea9",
+    "!Gyrinus2/Soundfx/Lazer": "6fb18a9f11393dd5443bce05bd88bd961981813a7d96e85c9233ece16b65f991",
+    "!Gyrinus2/Soundfx/Loadfx1Meg": "f97463a0b622579776fb03ab3c88aeb756597240526a530372a5a69af9722bb5",
+    "!Gyrinus2/Soundfx/Loadfx2Meg": "5ab34e72c5ea52e02765cd7b7fc987448d1ad882192ece99c0b71c96d34ea667",
+    "!Gyrinus2/Soundfx/NoSound": "57a8557a4c6fe3fe8d6ffc7ee42c45ecbec10d6e19c9cb098d3876ed9f940ab6",
+    "!Gyrinus2/Soundfx/NoSound2": "0f447cfb631852d54c5cd019d08dbfbb09f39e8817197505df3ab3eaedda7fbc",
+    "!Gyrinus2/Soundfx/NoSound3": "0e7056d7904f62c8e9e030ece309ba782827806ab13cba19b95a0f980085a049",
+    "!Gyrinus2/Soundfx/NoSound4": "8c15bc64d09f01bd2466b7fe23c729063dc46e36a740203c7bcb5f64bc4597ba",
+    "!Gyrinus2/Soundfx/NowtPersnl": "826bea8b4ba4c282c0d671a47673fa091ab2223a47a8b20600dfa4a71a60e17a",
+    "!Gyrinus2/Soundfx/OOZY9MM": "2453b2ba32de52a7c19352ce8fba68e9d67200267388cf6fecec271eef32f887",
+    "!Gyrinus2/Soundfx/Pulse": "2d2fd0049ccc5ce7ef9bc168997b173a5203d901478ee4358286fbd937f97ce0",
+    "!Gyrinus2/Soundfx/SmallBonus": "0e982fde7a22df75eb64d19cc9889cffb4799716c6d047030d5619d698d95f62",
+    "!Gyrinus2/Soundfx/TimeToDie": "7bda27a03de2d6cbf081bbd75e204f25f3ebdf765d252097ce1583bfde0f9d53",
+    "!Gyrinus2/Soundfx/TwighL": "97575e11d72584b2feceac437ab409c66c886e7bcbbdadb5be5193193cb4d9d1",
+    "!Gyrinus2/Soundfx/Water": "324fcd8be0b6ab9ed12b123dc626294214fc2ebf997c6b2c7f2248211aed3906",
+    "!MrMemory/!Boot": "3c5ac1b06cada75f3dd2979beb6fde5ee97651c99cb943906ba32e48ee963e5e",
+    "!MrMemory/!Run": "154aa2411a71e69021f272982f4ff4b0e488465d7936754cc72319ea47ba0fab",
+    "!MrMemory/!Sprites": "695f0b032c33e27ecdd826a12fab973b17d8c91e0fd3556b1ed9afa981e06219",
+    "!MrMemory/!Sprites1M": "a19e346009727d26b826b056b34d7c5adc80ffe0ba5858f50eb27f775127e36b",
+    "!MrMemory/Code/Memory": "cb05718b3bd7dc6ec5ebdd03c60a269e54512fd29d2417e9cf84b5f98136cf98",
+    "!MrMemory/Grafix/1meg2meg": "525664dc5c50b6fd865302f4bb32c5695a5faa5bc403b1f5a3a446c3cfc2ef9f",
+    "DoubleDisk/1Meg/!Run": "5faf8b2b8e40f59cf67020daf4dc5efe32e7f630b55b585593c24c5b82b5f8ba",
+    "DoubleDisk/2Meg+/!Run": "0fc44527e310e639f042281ec51b3466dec090efe6979700f88770d3325b0b3d",
+    "DoubleDisk/ReadMe": "ff0b6b5a8c286cd5e44afc2d5b01f9008a3ef0f39e1b1df29202f67d4b20c356"
+   },
+   "game_dirs": [
+    "!Gyrinus2",
+    "!MrMemory",
+    "DoubleDisk"
+   ]
+  },
+  {
+   "name": "disc2",
+   "title": "Gyrinus II - Son of Gyrinus (Disk 2 of 2): !Gyrn2Mapz",
+   "known_images": [
+    "defb62c757ffebfa4350ba8ed04c6180c50466923853c0bb493c22f992331f53"
+   ],
+   "key_files": {
+    "!Gyrn2Mapz/!Boot": "15e39266dd26d88bb07d700356cbbf22e54a028a8bb0862ec03d5fff5c101842",
+    "!Gyrn2Mapz/!Run": "4b0e0396b97037281c187632d8060950655e7a49581a1e3b6d0cb5053a6a96d5",
+    "!Gyrn2Mapz/!Sprites": "0e6cc3bbbc58e5d8e15058a19b3b28f12d03dfc9db08b3487c04305fccb48c74",
+    "!Gyrn2Mapz/Grafix/BkSprites1": "1ae9b2cbf44c575229b0e3ef341046e871130e7bc59ae0323d5b11451b3fd62b",
+    "!Gyrn2Mapz/Grafix/BkSprites2": "ca6a3060374704d55b884ac8876ac64c7f47d9c4205052473a36aec136d598f5",
+    "!Gyrn2Mapz/Grafix/BkSprites3": "8690509a08414594cb849ae8e739c4117a3d46816c023da98d97b57197000e26",
+    "!Gyrn2Mapz/Grafix/BkSprites4": "41a808af63b05c38225899285da478351ddb51a361c39cedd37333790426712a",
+    "!Gyrn2Mapz/Grafix/BkSprites5": "d51262c63d4195595351c5d7cebf97600d4e9a9f46d8bfbe20beb3cfafa3459c",
+    "!Gyrn2Mapz/Grafix/LaFin!": "739c339c2f23836431345ea78489692ab481c906581e1486ee52c95b410459f1",
+    "!Gyrn2Mapz/Level1/Level1": "045306a8c36f6e1203ad0f06ca40ccde164fef551da523091c38baaea9d507c8",
+    "!Gyrn2Mapz/Level2/Level1": "fcf0a160fd99c1a5ac6a1cb502461d382fc0113d0a207c1f423c487cc0845624",
+    "!Gyrn2Mapz/Level2/Level3": "c384f1a0bae2b0f27b02e5ea71097adaa0f6d3675648ec4e3d511717ebafe746",
+    "!Gyrn2Mapz/Level2/Level5": "966f4eaf6f45040b4b0cb3cd700cd6de138c78c6084b68b8aeeb56934f7b01d1",
+    "!Gyrn2Mapz/Level3/Level1": "4704fb1c83a540c3c89d1db46f6873cfa25e59c73b54993a79ec4b272dfe9cc1",
+    "!Gyrn2Mapz/Level3/Level2": "b00b077fe767d259ad0316e029ec0824c168e4867cbf89f8d045e3b92fa9a3b5",
+    "!Gyrn2Mapz/Level3/Level3": "8be58bec4407c71d1bc26885f49dac1a361d4212ac7f474ca5fc4e7669b1914b",
+    "!Gyrn2Mapz/Level3/Level4": "cce616779fbceee7b691e06cb599ef475af2c5668683055c2c88862d6526aea6",
+    "!Gyrn2Mapz/Level3/Level5": "403e01f7e14e150cb568ba1f5877f6e941c349fb18eef655fe4bc92b9cb411ba",
+    "!Gyrn2Mapz/Level4/Level1": "73c44fd3cc34010dddc449bdfec8aa262175e030339ac8f4a82d53a1c8e6f4f7",
+    "!Gyrn2Mapz/Musix/Level1": "df1e98f333f40c6bd0744ab3946de170d203968fd80d5ef60564e52ada1bf48f",
+    "!Gyrn2Mapz/Musix/Level2": "e7f32d5b3696782a3e53d6e557cf24e185d4ac4584b62891b8d01f747bc95470",
+    "!Gyrn2Mapz/Musix/Level3": "a4f8c61ba1b1b7199159125b0d467a575d35591be2481d31cbe5b9b4eb6061e8",
+    "!Gyrn2Mapz/Musix/Level4": "c0d976244c73e7c48c7dacc2f10fd886e3e29dea97e717bc1a4e7c0e1efa3dca",
+    "!Gyrn2Mapz/Musix/Level5": "60bd92ed6dad302b30ac10e41d5c3e19858d11c6072cca9c7d93470c77cbead6",
+    "!Gyrn2Mapz/Stuff/Level1Vis": "df0a8cdfba71570905a9053d613f6feb3797195e0eef1858027311cc290c06ba",
+    "!Gyrn2Mapz/Stuff/Level3Vis": "a67e6bdb03f0f59abea5c00458085fa362c03fc949496adca4cdf5f87db63869",
+    "!Gyrn2Mapz/Stuff/Level4Vis": "1ff73502e937f227dd2375a8312479da79d4da768b4ded09549d7429441ddde7"
+   },
+   "game_dirs": [
+    "!Gyrn2Mapz"
+   ]
+  }
+ ],
+ "build": [
+  "python3 -I \"$WEAVE\" extract . INPUTS",
+  "make -C recomp basic",
+  "make -C recomp regen",
+  "make -C recomp"
+ ],
+ "output": "recomp/gyrinus2",
+ "requires": {
+  "superspider": "~/stuff/superspider, or $SUPERSPIDER (dune build): analyse, gen, tools/weave.py",
+  "libroger": "~/stuff/libroger, or make ROGER=...",
+  "host": [
+   "python3",
+   "ocaml + dune",
+   "gcc",
+   "SDL3 (pkg-config sdl3)"
+  ]
+ },
+ "run": "cd recomp && ./gyrinus2"
+}

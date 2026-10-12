@@ -27,7 +27,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOP = os.path.dirname(HERE)
-EXT = os.path.join(TOP, 'extracted')
+EXT = os.path.join(TOP, 'game')                 # !Gyrinus2, !Gyrn2Mapz, ... (recipe.json)
 SS = os.environ.get('SUPERSPIDER', os.path.expanduser('~/stuff/superspider'))
 
 MCODE = ('!Gyrinus2/Code/MCode,0007f800-00000000', 0x7F800, 0x8BD08)
@@ -45,7 +45,7 @@ def find(d, leaf):
 
 
 def images():
-    """(name, path relative to extracted/, base, exec or None, is module)"""
+    """(name, path relative to game/, base, exec or None, is module)"""
     out = [('mcode', MCODE[0], MCODE[1], MCODE[2], False)]
     base = 0x1800000
     for v in VOICES:
@@ -66,6 +66,7 @@ def analyse():
     subprocess.run(['dune', 'build'], cwd=SS, check=True)
     exe = os.path.join(SS, '_build/default/bin/main.exe')
     an = os.path.join(TOP, 'analysis')
+    os.makedirs(an, exist_ok=True)
     for name, path, base, exe_addr, module in images():
         img = os.path.join(EXT, path)
         cmd = [exe, 'analyse', img, '%x' % base, '--full', '-o', os.path.join(an, name + '.json')]
@@ -107,7 +108,7 @@ def gen():
             f.write('extern const struct roger_image %s_image;\n' % tab)
         f.write('static const struct roger_module modules[] = {\n')
         for path, tab, od in mods:
-            f.write('    {"../extracted/%s", &%s_image, %d},\n' % (path, tab, od))
+            f.write('    {"../game/%s", &%s_image, %d},\n' % (path, tab, od))
         f.write('    {NULL, NULL, 0}};\n')
 
 

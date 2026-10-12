@@ -42,6 +42,15 @@ regen:
 	python3 ../tools/images.py analyse
 	python3 ../tools/images.py gen
 
+SS      ?= $(HOME)/stuff/superspider
+
+# make basic: the BASIC programs (filetype &FFB) in ../game, detokenised
+# into ../basic/<application>-<name>.bas, to read (game.c does what they do)
+basic:
+	mkdir -p ../basic
+	cd ../game && for f in */Code/*,fffffb* */Help/*,fffffb*; do \
+	    python3 -I $(SS)/tools/detok.py "$$f" > "../basic/$${f%%/*}-$$(basename "$${f%%,*}").bas"; done
+
 # "make roots" merges the gap entries a --trace-gaps run logged
 # (untranslated.log, or LOG=...) into ../analysis/<image>.roots, so the next
 # "make regen" translates them.
@@ -53,4 +62,4 @@ roots:
 clean:
 	rm -f gen/*/*.o game.o gyrinus2 gyrinus2-cov *.cov.o gen/*/*.cov.o
 
-.PHONY: FORCE cov regen roots clean
+.PHONY: basic FORCE cov regen roots clean

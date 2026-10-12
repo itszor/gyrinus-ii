@@ -19,3 +19,11 @@ recomp/*.log
 recomp/screenshot-*.bmp
 recomp/*.wav
 recomp/savedata/
+
+# The original discs and everything made from them: build.sh (recipe.json)
+# remakes them from the user's own copy.
+*.adf
+*.zip
+extracted/
+game/
+basic/

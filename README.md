@@ -3,10 +3,22 @@ Gyrinus II - Son of Gyrinus (Tom Cooper, 1991; public domain) - static recompila
 
 Disc images: `Gyrinus II - Son of Gyrinus (19xx)(Tom Cooper)(Disk 1 of 2).adf`
 (!Gyrinus2, !MrMemory, DoubleDisk) and disk 2 (!Gyrn2Mapz: level maps,
-backgrounds, level music), extracted into extracted/.
+backgrounds, level music).
+
+A recipe: this repository holds no game data. It rebuilds the game from
+your own copy, recognised by content (recipe.json):
+
+    ./build.sh "Gyrinus II - Son of Gyrinus (19xx)(Tom Cooper).zip"    (or the two .adf files)
+    cd recomp && ./gyrinus2
+
+build.sh runs recipe.json's steps with SuperSpider's tools/weave.py
+(~/stuff/superspider, or $SUPERSPIDER; $SS below): it extracts the discs
+to extracted/disc1 and disc2 and their applications to game/ (libroger's
+appdir), detokenises the BASIC, then analyses, translates and links.
+Needs python3, OCaml/dune, gcc and SDL3.
 
     $SS/tools/detok.py  BBC BASIC V detokeniser (also lists inline assembler)
-    basic/              the BASIC programs, detokenised
+    basic/              the BASIC programs, detokenised (make basic in recomp/)
     tools/images.py     the translated images; `analyse` runs SuperSpider
                         (~/stuff/superspider) on each, `gen` runs $SS/tools/gen_c.py
     analysis/           SuperSpider output (ss/), adapter output (*.json, out/),

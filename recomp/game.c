@@ -183,11 +183,11 @@ static const struct roger_config config = {
     .title = "Gyrinus II (recompiled)",
     /* MCode: load address &7F800, execution address &8BD08 (from the
      * disc's catalogue; the extracted name doesn't keep the latter) */
-    .image_path = "../extracted/!Gyrinus2/Code/MCode,0007f800-00000000",
+    .image_path = "../game/!Gyrinus2/Code/MCode,0007f800-00000000",
     .entry = 0x8BD08,
     .image = &recomp_image,
     .modules = modules,
-    .appdir = "../extracted",
+    .appdir = "../game",
     .variables = variables,
     .initial_mode = 13,
     /* WimpSlot 524K, which a 2MB machine's 32K pages make 544K: MCode ends
