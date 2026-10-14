@@ -30,9 +30,9 @@ TOP = os.path.dirname(HERE)
 EXT = os.path.join(TOP, 'game')                 # !Gyrinus2, !Gyrn2Mapz, ... (recipe.json)
 SS = os.environ.get('SUPERSPIDER', os.path.expanduser('~/stuff/superspider'))
 
-MCODE = ('!Gyrinus2/Code/MCode,0007f800-00000000', 0x7F800, 0x8BD08)
+MCODE = ('!Gyrinus2/Code/MCode,0007f800-0008bd08', 0x7F800, 0x8BD08)
 VOICES = 'Aargh! Lazer GotBonus Explo1 Explo2 Explo3 Pulse SmallBonus OOZY9MM Hey! Boogaloo TimeToDie TwighL Water IllBeBack NowtPersnl'.split()
-SONGS = ['!Gyrinus2/Musik/TitleTrak,fffffa44-00000000'] + [
+SONGS = ['!Gyrinus2/Musik/TitleTrak,fffffa44-17821267'] + [
     '!Gyrn2Mapz/Musix/' + f for f in sorted(os.listdir(os.path.join(EXT, '!Gyrn2Mapz/Musix')))]
 COCO_BASE = 0x1840000
 

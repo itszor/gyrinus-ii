@@ -186,7 +186,7 @@ static const struct roger_config config = {
     .pad_map = "left=Z,right=X,up=Shift,down=Keypad Enter,a=Return,b=Shift,x=P,start=Space",
     /* MCode: load address &7F800, execution address &8BD08 (from the
      * disc's catalogue; the extracted name doesn't keep the latter) */
-    .image_path = "../game/!Gyrinus2/Code/MCode,0007f800-00000000",
+    .image_path = "../game/!Gyrinus2/Code/MCode,0007f800-0008bd08",
     .entry = 0x8BD08,
     .image = &recomp_image,
     .modules = modules,

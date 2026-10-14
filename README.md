@@ -74,8 +74,8 @@ What runs
   (title tune on, carried on into the game), VDU 21, *Run Code.MCode. The
   first part is C in game.c.
 - Code.MCode: the game, translated (gen/mcode). An absolute file loaded at
-  &7F800 and entered at &8BD08 - its execution address, which the disc's
-  catalogue has but the extracted name (`,0007f800-00000000`) lost. It
+  &7F800 and entered at &8BD08, its execution address (the extracted
+  name's `,0007f800-0008bd08`). It
   runs * commands for its files and music: *Load/*Save at &9600,
   `If "<Gyr$TuneOn>" = "TuneOn" Then RmRun ...Musix.Level#`, *RMKill
   CoconizerSong.
