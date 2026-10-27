@@ -57,19 +57,23 @@ What runs
   memory areas; not run. The machine is set up as they leave it
   (screen memory 160K).
 - Soundfx.Loadfx2Meg: *RMLoads 16 sample voice modules. Each is translated
-  for a fixed RMA address (tools/images.py) and loaded at start-up. Each
+  for a fixed RMA address (tools/images.py) and loaded on demand; game.c
+  runs Loadfx2Meg's commands (loadfx()), which load them. Each
   converts its sample to VIDC log format at initialisation (with
   Sound_SoundLog) and plays the whole sample on GateOn, whatever the note's
   duration. Loadfx2Meg then runs `Tuning 0`, `Tuning -&1000`,
   `Tuning -&2000`: *Tuning is relative, so the tuning ends three octaves
   below the default, which brings the effects (played at BBC pitch 50 or
-  so) down to about 8 kHz. game.c runs the three commands; they don't
-  affect the music, whose player sets its pitches itself.
+  so) down to about 8 kHz. They don't affect the music, whose player sets
+  its pitches itself.
   The game attaches voices by number, 1 to 16: Loadfx2Meg's first
   commands (`RmFaster SoundChannels` & co) replace the sound modules with
   fresh copies, emptying the voice table, so the 16 modules get slots 1-16
   (!Run ends with `RmReinit WaveSynth` etc. to bring the OS's own voices
-  back). libroger has no built-in voices, so its slots are the same.
+  back). libroger gives out slots from 10, past RISC OS 3.1's nine ROM
+  voices, unless SoundChannels has been reinitialised (*RMFaster or
+  *RMReinit SoundChannels); before game.c ran those commands the voices
+  got 10-25 and the effects played WaveSynth-Beep or nothing.
 - Code.RunMe (BASIC): the title picture, `Gyr$TuneOn` / `Gyr$TuneCont`
   (title tune on, carried on into the game), VDU 21, *Run Code.MCode. The
   first part is C in game.c.

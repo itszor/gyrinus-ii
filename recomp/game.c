@@ -13,8 +13,8 @@
  * sprite file with it and plots sprites into both screen banks. Here they
  * are C (warnung, loading, runme, endgame below). MemAlloc only resizes
  * memory areas, which libroger fixes (screen_size); the voice modules are
- * translated (gen/v_*) and RMLoaded at start-up as by Loadfx2Meg, whose
- * *Tuning commands are loadfx() below. */
+ * translated (gen/v_*) and RMLoaded by Loadfx2Meg's commands, loadfx()
+ * below. */
 #include <stdio.h>
 #include <string.h>
 #include <roger.h>
@@ -114,12 +114,26 @@ static void runme(void)
     vdu((const uint8_t[]){21}, 1);
 }
 
-/* Soundfx.Loadfx2Meg, after its *RMLoads (the voices are loaded as
- * configured modules): *Tuning is relative, so this sets the tuning three
- * octaves below the default, bringing the effects' samples (played at
- * BBC pitch 50 or so) down to roughly the rates they were recorded at */
+/* Soundfx.Loadfx2Meg. Restarting SoundChannels empties its voice table,
+ * so the 16 voices get slots 1-16, the numbers the game attaches them by
+ * (from 10 they'd be past the ROM voices, and the game's effects would
+ * play on the wrong voices or none). *Tuning is relative, so the last
+ * three set the tuning three octaves below the default, bringing the
+ * effects' samples (played at BBC pitch 50 or so) down to roughly the
+ * rates they were recorded at */
 static void loadfx(void)
 {
+    static const char *const voices[] = {"Aargh!", "Lazer", "GotBonus", "Explo1", "Explo2", "Explo3",
+        "Pulse", "SmallBonus", "Oozy9mm", "Hey!", "Boogaloo", "TimeToDie", "TwighL", "Water",
+        "IllBeBack", "NowtPersnl", NULL};
+    char cmd[64];
+    roger_cli("RmFaster SoundDMA");
+    roger_cli("RmFaster SoundChannels");
+    roger_cli("RmFaster SoundScheduler");
+    for (const char *const *v = voices; *v; v++) {
+        snprintf(cmd, sizeof cmd, "RmLoad <Gyr2$Dir>.Soundfx.%s", *v);
+        roger_cli(cmd);
+    }
     roger_cli("Tuning 0");
     roger_cli("Tuning -&1000");
     roger_cli("Tuning -&2000");
